@@ -41,6 +41,5 @@ ordinalDateValid od@(OrdinalDate y d) = ordinalDate # od
     <$ guard (1 <= d && d <= if isLeapYear y then 366 else 365)
 
 -- * Lenses
-LENS(OrdinalDate,odYear,Year)
-LENS(OrdinalDate,odDay,DayOfYear)
-
+LENS(OrdinalDate,odYear,_odYear,Year)
+LENS(OrdinalDate,odDay,_odDay,DayOfYear)

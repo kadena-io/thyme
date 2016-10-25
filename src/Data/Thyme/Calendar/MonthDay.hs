@@ -14,6 +14,5 @@ import Control.Lens
 import Data.Thyme.Calendar.Internal
 
 -- * Lenses
-LENS(MonthDay,mdMonth,Month)
-LENS(MonthDay,mdDay,DayOfMonth)
-
+LENS(MonthDay,mdMonth,_mdMonth,Month)
+LENS(MonthDay,mdDay,_mdDay,DayOfMonth)

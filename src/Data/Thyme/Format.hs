@@ -279,20 +279,20 @@ data TimeParse = TimeParse
     , tpTimeZone :: !TimeZone
     } deriving (Show)
 
-LENS(TimeParse,tpCentury,Int)
-LENS(TimeParse,tpCenturyYear,Int{-YearOfCentury-})
-LENS(TimeParse,tpMonth,Month)
-LENS(TimeParse,tpWeekOfYear,WeekOfYear)
-LENS(TimeParse,tpDayOfMonth,DayOfMonth)
-LENS(TimeParse,tpDayOfWeek,DayOfWeek)
-LENS(TimeParse,tpDayOfYear,DayOfYear)
-LENS(TimeParse,tpFlags,Int{-BitSet TimeFlag-})
-LENS(TimeParse,tpHour,Hour)
-LENS(TimeParse,tpMinute,Minute)
-LENS(TimeParse,tpSecond,Int)
-LENS(TimeParse,tpSecFrac,DiffTime)
-LENS(TimeParse,tpPOSIXTime,POSIXTime)
-LENS(TimeParse,tpTimeZone,TimeZone)
+LENS(TimeParse,tpCentury,_tpCentury,Int)
+LENS(TimeParse,tpCenturyYear,_tpCenturyYear,Int{-YearOfCentury-})
+LENS(TimeParse,tpMonth,_tpMonth,Month)
+LENS(TimeParse,tpWeekOfYear,_tpWeekOfYear,WeekOfYear)
+LENS(TimeParse,tpDayOfMonth,_tpDayOfMonth,DayOfMonth)
+LENS(TimeParse,tpDayOfWeek,_tpDayOfWeek,DayOfWeek)
+LENS(TimeParse,tpDayOfYear,_tpDayOfYear,DayOfYear)
+LENS(TimeParse,tpFlags,_tpFlags,Int{-BitSet TimeFlag-})
+LENS(TimeParse,tpHour,_tpHour,Hour)
+LENS(TimeParse,tpMinute,_tpMinute,Minute)
+LENS(TimeParse,tpSecond,_tpSecond,Int)
+LENS(TimeParse,tpSecFrac,_tpSecFrac,DiffTime)
+LENS(TimeParse,tpPOSIXTime,_tpPOSIXTime,POSIXTime)
+LENS(TimeParse,tpTimeZone,_tpTimeZone,TimeZone)
 
 {-# INLINE flag #-}
 flag :: TimeFlag -> Lens' TimeParse Bool
@@ -723,4 +723,3 @@ timeZoneParser = zone "TAI" 0 False <|> zone "UT1" 0 False
     zone name offset dst = TimeZone offset dst name <$ P.string (S.pack name)
     ($+) h m = h * 60 + m
     ($-) h m = negate (h * 60 + m)
-

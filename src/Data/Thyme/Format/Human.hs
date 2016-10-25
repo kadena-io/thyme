@@ -29,7 +29,7 @@ data Unit = Unit
     , single :: ShowS
     , plural :: ShowS
     }
-LENS(Unit,plural,ShowS)
+LENS(Unit,plural,_plural,ShowS)
 
 -- | Display 'DiffTime' or 'NominalDiffTime' in a human-readable form.
 {-# INLINE humanTimeDiff #-}
@@ -84,4 +84,3 @@ units = scanl (&)
     times :: String -> Rational -> Unit -> Unit
     times ((++) . (:) ' ' -> single) r Unit {unit}
         = Unit {unit = r *^ unit, plural = single . (:) 's', ..}
-

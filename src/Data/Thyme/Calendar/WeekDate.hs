@@ -77,15 +77,14 @@ instance CoArbitrary MondayWeek where
 
 -- * Lenses
 
-LENS(WeekDate,wdYear,Year)
-LENS(WeekDate,wdWeek,WeekOfYear)
-LENS(WeekDate,wdDay,DayOfWeek)
+LENS(WeekDate,wdYear,_wdYear,Year)
+LENS(WeekDate,wdWeek,_wdWeek,WeekOfYear)
+LENS(WeekDate,wdDay,_wdDay,DayOfWeek)
 
-LENS(SundayWeek,swYear,Year)
-LENS(SundayWeek,swWeek,WeekOfYear)
-LENS(SundayWeek,swDay,DayOfWeek)
+LENS(SundayWeek,swYear,_swYear,Year)
+LENS(SundayWeek,swWeek,_swWeek,WeekOfYear)
+LENS(SundayWeek,swDay,_swDay,DayOfWeek)
 
-LENS(MondayWeek,mwYear,Year)
-LENS(MondayWeek,mwWeek,WeekOfYear)
-LENS(MondayWeek,mwDay,DayOfWeek)
-
+LENS(MondayWeek,mwYear,_mwYear,Year)
+LENS(MondayWeek,mwWeek,_mwWeek,WeekOfYear)
+LENS(MondayWeek,mwDay,_mwDay,DayOfWeek)

@@ -365,17 +365,16 @@ utcToLocalZonedTime time = do
 
 -- * Lenses
 
-LENS(TimeZone,timeZoneMinutes,Minutes)
-LENS(TimeZone,timeZoneSummerOnly,Bool)
-LENS(TimeZone,timeZoneName,String)
+LENS(TimeZone,timeZoneMinutes,_timeZoneMinutes,Minutes)
+LENS(TimeZone,timeZoneSummerOnly,_timeZoneSummerOnly,Bool)
+LENS(TimeZone,timeZoneName,_timeZoneName,String)
 
-LENS(TimeOfDay,todHour,Hour)
-LENS(TimeOfDay,todMin,Minute)
-LENS(TimeOfDay,todSec,DiffTime)
+LENS(TimeOfDay,todHour,_todHour,Hour)
+LENS(TimeOfDay,todMin,_todMin,Minute)
+LENS(TimeOfDay,todSec,_todSec,DiffTime)
 
-LENS(LocalTime,localDay,Day)
-LENS(LocalTime,localTimeOfDay,TimeOfDay)
+LENS(LocalTime,localDay,_localDay,Day)
+LENS(LocalTime,localTimeOfDay,_localTimeOfDay,TimeOfDay)
 
-LENS(ZonedTime,zonedTimeToLocalTime,LocalTime)
-LENS(ZonedTime,zonedTimeZone,TimeZone)
-
+LENS(ZonedTime,zonedTimeToLocalTime,_zonedTimeToLocalTime,LocalTime)
+LENS(ZonedTime,zonedTimeZone,_zonedTimeZone,TimeZone)

@@ -103,7 +103,6 @@ gregorianYearsRollover n (YearMonthDay ((+) n -> y') 2 29)
 gregorianYearsRollover n (YearMonthDay y m d) = YearMonthDay (y + n) m d
 
 -- * Lenses
-LENS(YearMonthDay,ymdYear,Year)
-LENS(YearMonthDay,ymdMonth,Month)
-LENS(YearMonthDay,ymdDay,DayOfMonth)
-
+LENS(YearMonthDay,ymdYear,_ymdYear,Year)
+LENS(YearMonthDay,ymdMonth,_ymdMonth,Month)
+LENS(YearMonthDay,ymdDay,_ymdDay,DayOfMonth)

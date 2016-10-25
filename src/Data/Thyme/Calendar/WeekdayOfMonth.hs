@@ -102,8 +102,7 @@ weekdayOfMonthValid (WeekdayOfMonth y m n wd) = (refDay .+^ s * offset)
     offset = (abs n - 1) * 7 + if wo < 0 then wo + 7 else wo
 
 -- * Lenses
-LENS(WeekdayOfMonth,womYear,Year)
-LENS(WeekdayOfMonth,womMonth,Month)
-LENS(WeekdayOfMonth,womNth,Int)
-LENS(WeekdayOfMonth,womDayOfWeek,DayOfWeek)
-
+LENS(WeekdayOfMonth,womYear,_womYear,Year)
+LENS(WeekdayOfMonth,womMonth,_womMonth,Month)
+LENS(WeekdayOfMonth,womNth,_womNth,Int)
+LENS(WeekdayOfMonth,womDayOfWeek,_womDayOfWeek,DayOfWeek)

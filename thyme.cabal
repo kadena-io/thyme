@@ -48,6 +48,11 @@ flag Werror
     default: False
     manual: True
 
+flag ghcjs
+    description: for GHCJS builds
+    default: False
+    manual: True
+
 library
     default-language: Haskell2010
     include-dirs: include
@@ -95,7 +100,7 @@ library
         vector-space >= 0.8
     if os(windows)
         build-depends: Win32
-    if os(darwin)
+    if (os(darwin) && !flag(ghcjs))
         build-tools: cpphs
         ghc-options: -pgmP cpphs -optP--cpp
     if flag(lens)
@@ -192,4 +197,3 @@ benchmark bench
     ghc-options: -Wall
 
 -- vim: et sw=4 ts=4 sts=4:
-
