@@ -98,6 +98,17 @@ timeZoneOffsetString TimeZone {..} = sign : (shows02 h . shows02 m) "" where
     (sign, offset) = if timeZoneMinutes < 0
         then ('-', negate timeZoneMinutes) else ('+', timeZoneMinutes)
 
+-- | Text representing the offset of this timezone in ISO 8601 style,
+-- e.g. \"-08:00\" or
+-- \"+04:00\" (like @%N@ in 'Data.Thyme.Format.formatTime')
+{-# INLINEABLE timeZoneOffsetStringColon #-}
+timeZoneOffsetStringColon :: TimeZone -> String
+timeZoneOffsetStringColon TimeZone {..} =
+    sign : (shows02 h . (:) ':' . shows02 m) "" where
+    (h, m) = divMod offset 60
+    (sign, offset) = if timeZoneMinutes < 0
+        then ('-', negate timeZoneMinutes) else ('+', timeZoneMinutes)
+
 -- | Create a nameless non-summer timezone for this number of minutes
 minutesToTimeZone :: Minutes -> TimeZone
 minutesToTimeZone m = TimeZone m False ""

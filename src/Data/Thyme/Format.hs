@@ -98,6 +98,7 @@ instance FormatTime TimeOfDay where
         -- Second
         'S' -> shows02 si
         'q' -> fills06 su . shows su . (++) "000000"
+        'v' -> fills06 su . shows su
         'Q' -> if su == 0 then id else (:) '.' . fills06 su . drops0 su
         -- default
         _ -> def c
@@ -218,6 +219,7 @@ instance FormatTime TimeZone where
     {-# INLINEABLE showsTime #-}
     showsTime _ tz@(TimeZone _ _ name) = \ def c -> case c of
         'z' -> (++) (timeZoneOffsetString tz)
+        'N' -> (++) (timeZoneOffsetStringColon tz)
         'Z' -> (++) (if null name then timeZoneOffsetString tz else name)
         _ -> def c
 
@@ -334,6 +336,7 @@ timeParser TimeLocale {..} = flip execStateT unixEpoch . go where
             -- Second
             'S' -> lift (dec0 2) >>= assign _tpSecond >> go rspec
             'q' -> lift micro >>= assign _tpSecFrac . DiffTime >> go rspec
+            'v' -> lift micro >>= assign _tpSecFrac . DiffTime >> go rspec
             'Q' -> lift ((P.char '.' >> DiffTime <$> micro) <|> return zeroV)
                 >>= assign _tpSecFrac >> go rspec
 
@@ -372,6 +375,7 @@ timeParser TimeLocale {..} = flip execStateT unixEpoch . go where
 
             -- TimeZone
             'z' -> do tzOffset; go rspec
+            'N' -> do tzOffset; go rspec
             'Z' -> do tzOffset <|> tzName; go rspec
             -- UTCTime
             's' -> do
