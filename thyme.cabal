@@ -100,7 +100,7 @@ library
         vector-space >= 0.8
     if os(windows)
         build-depends: Win32
-    if (os(darwin) && !flag(ghcjs))
+    if (os(darwin) && !flag(ghcjs) && impl(ghc < 8.10.3))
         build-tools: cpphs
         ghc-options: -pgmP cpphs -optP--cpp
     if flag(lens)
